@@ -5,7 +5,7 @@ O professor diz que as etapas não precisam ser feitas na ordem dele. Abaixo est
 
 Marque `[x]` quando terminar um item.
 
-**Próximo passo:** calcular a distância entre duas cidades (seção 2).
+**Próximo passo:** escrever o artigo (seção 7), começando pela modelagem (seção 3).
 
 ## Prazos
 
@@ -42,8 +42,8 @@ O professor avisou que **não haverá apresentação**. O relatório deve ser en
 - [x] Calcular a distância entre duas cidades (Pitágoras, arredondando para o inteiro mais próximo)
 - [x] Montar a matriz de distâncias (todas as distâncias calculadas uma vez só)
 - [x] Menu para consultar a distância entre duas cidades (`distancia.py`)
-- [ ] Calcular o custo de uma rota (somar as distâncias e voltar à cidade inicial)
-- [ ] Ler só as k primeiras cidades (sub-instâncias para o algoritmo exato)
+- [x] Calcular o custo de uma rota (somar as distâncias e voltar à cidade inicial) (`custo.py`)
+- [x] Ler só as k primeiras cidades (sub-instâncias para o algoritmo exato)
 - [ ] Copiar `st70.tsp.txt` e `pr76.tsp.txt` para esta pasta
 
 ## 3. Modelagem (etapa 2)
@@ -73,20 +73,25 @@ Além disso:
 
 ## 5. Implementação (etapa 4)
 
-- [ ] Programar o algoritmo exato, seguindo o pseudocódigo
-- [ ] Programar o algoritmo heurístico, seguindo o pseudocódigo
-- [ ] Usar o custo da rota do guloso como "melhor até agora" inicial do branch and bound, para ele podar mais desde o começo
+- [x] Programar o algoritmo exato, seguindo o pseudocódigo (`bnb.py`, e `bnb_arvore.py` para ver a árvore)
+- [x] Programar o algoritmo heurístico, seguindo o pseudocódigo (`guloso.py`)
+- [x] Usar o custo da rota do guloso como "melhor até agora" inicial do branch and bound, para ele podar mais desde o começo
 - [ ] Testar em instâncias pequenas e conferir com a resposta feita à mão
 - [ ] Anotar as decisões que mudam o custo (ex.: como escolher a próxima cidade, critério de poda)
 
 ## 6. Experimentos (etapa 5)
 
-- [ ] Rodar o exato em sub-instâncias de tamanho crescente (5, 6, 7… cidades) até ficar lento demais
-- [ ] Rodar o heurístico nas mesmas sub-instâncias e nas instâncias inteiras
-- [ ] Medir o tempo, repetindo cada execução algumas vezes (média e desvio padrão)
-- [ ] Medir a qualidade: custo da rota e diferença % em relação ao ótimo
-- [ ] Fazer os gráficos de tempo e comparar com a complexidade prevista na etapa 3
-- [ ] Anotar o maior tamanho que cada algoritmo resolve em tempo razoável
+- [x] Comparar guloso e B&B nas mesmas cidades: rota, custo (ida e volta), tempo, diferença % e mapa lado a lado (`comparar.py`)
+Tudo abaixo roda com `python experimentos.py` (~1 min), que gera `resultados.csv` e os gráficos.
+
+- [x] Rodar o exato em sub-instâncias de tamanho crescente: 4 a 13 cidades
+- [x] Rodar o heurístico nas sub-instâncias e no berlin52 inteiro: 4 a 52 cidades
+- [ ] (Opcional) Rodar o heurístico no st70 e no pr76
+- [x] Medir o tempo com média e desvio padrão: 5 repetições no B&B, 30 no guloso
+- [x] Medir a qualidade: custo da rota e diferença % em relação ao ótimo
+- [x] Fazer os gráficos: `tempo_bnb.png`, `tempo_guloso.png`, `qualidade_guloso.png`
+- [ ] Comparar as curvas com a complexidade prevista na etapa 3 (texto do artigo)
+- [x] Maior tamanho em tempo razoável: B&B até 13 cidades (~10 s); guloso resolve as 52 em ~0,15 ms
 
 Diferença % = (custo encontrado − ótimo) / ótimo × 100
 
