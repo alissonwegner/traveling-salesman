@@ -1,16 +1,15 @@
+import math
 import time
 
 from read import cidades, matriz      # reaproveita a leitura e a matriz do read.py
-from custo import custo_rota
-from guloso import guloso
 from guloso_arvore import pedir_numero
 from mapa import desenhar
 
 
 def branch_and_bound(matriz):
     n = len(matriz)
-    melhor_rota = guloso(matriz)                  # limite inicial: a rota do guloso
-    melhor_custo = custo_rota(melhor_rota, matriz)
+    melhor_rota = None                            # ainda não há rota: a primeira rota completa vira a melhor
+    melhor_custo = math.inf                       # sem limite inicial (B&B puro, não usa o guloso)
     nos = 0                                       # quantos nós da árvore foram visitados
     podas = 0                                     # quantos galhos foram cortados
 
